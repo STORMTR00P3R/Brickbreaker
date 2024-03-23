@@ -26,9 +26,13 @@ let ball = {
         if (this.y + this.dy < this.r) {
             this.dy = -this.dy;
         } else if (this.y + this.dy > canvas.height - (this.r / 2)) {
-            alert('GAME OVER');
-            document.location.reload();
-            clearInterval(interval);
+            if(this.x > paddle.x && this.x < paddle.x + paddle.width) {
+                this.dy = -this.dy;
+            } else {
+                alert('GAME OVER');
+                document.location.reload();
+                clearInterval(interval);
+            }
         }
     }
 }
